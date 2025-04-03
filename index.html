@@ -8,34 +8,47 @@
         body {
             font-family: Arial, sans-serif;
             background-color: lightblue;
-            background-image: url(cor.jpg);
+            background-image: url(net.jpg);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             text-align: center;
+            padding: 10px;
         }
         .container {
-            width: 50%;
+            width: 100%;
             max-width: 400px;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
         }
         fieldset {
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             border: 2px solid #007BFF;
         }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
         button {
+            width: 100%;
             background-color: #007BFF;
             color: white;
             border: none;
             padding: 10px;
             cursor: pointer;
             border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
         }
         button:hover {
             background-color: #0056b3;
@@ -57,23 +70,26 @@
 
         <fieldset>
             <legend>Digite a largura e altura da parede</legend>
-            <p>Altura (m)</p>
-            <input type="number" id="alt"><br>
-            <p>Largura (m)</p>
-            <input type="number" id="larg"><br>
-            <br>
+            <label for="alt">Altura (m)</label>
+            <input type="number" id="alt">
+            
+            <label for="larg">Largura (m)</label>
+            <input type="number" id="larg">
+            
             <div class="alert">*O cálculo é válido para tinta acrílica, látex PVA e epóxi.</div>
-            <br>
+
             <label for="tipoTinta">Escolha o tipo de tinta:</label>
             <select id="tipoTinta">
                 <option value="18">Tinta Acrílica</option>
                 <option value="20">Tinta Látex PVA</option>
                 <option value="15">Tinta Epóxi</option>
             </select>
-            <br><br>
+            
             <button id="result">Calcular</button>
+            
             <p>Você precisa de um total de</p>
-            <input type="text" id="tint" readonly><p>litros de tinta para pintar sua parede</p>
+            <input type="text" id="tint" readonly>
+            <p>litros de tinta para pintar sua parede</p>
         </fieldset>
     </div>
 
