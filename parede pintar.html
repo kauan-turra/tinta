@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicativo Utilitário para Pintar Parede</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+            background-image: url(cor.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #007BFF;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Medidor de Tinta para Parede</h1>
+        <u><p>Precisando de ajuda para pintar sua parede? Nós te ajudamos!<br></u>
+            <br>
+        <i>Basta colocar a altura e largura da sua parede que te diremos quantos litros de tinta você precisará.</p></i>
+
+        <fieldset>
+            <legend>Digite a largura e altura da parede</legend>
+            <p>Altura (m)</p>
+            <input type="number" id="alt"><br>
+            <p>Largura (m)</p>
+            <input type="number" id="larg"><br>
+            <br>
+            <div class="alert">*O cálculo é válido para tinta acrílica, látex PVA e epóxi.</div>
+            <br>
+            <label for="tipoTinta">Escolha o tipo de tinta:</label>
+            <select id="tipoTinta">
+                <option value="18">Tinta Acrílica</option>
+                <option value="20">Tinta Látex PVA</option>
+                <option value="15">Tinta Epóxi</option>
+            </select>
+            <br><br>
+            <button id="result">Calcular</button>
+            <p>Você precisa de um total de</p>
+            <input type="text" id="tint" readonly><p>litros de tinta para pintar sua parede</p>
+        </fieldset>
+    </div>
+
+    <script>
+        function calculartinta() {
+            var alt = parseFloat(document.getElementById("alt").value);
+            var larg = parseFloat(document.getElementById("larg").value);
+            var rendimento = parseFloat(document.getElementById("tipoTinta").value);
+            
+            if (isNaN(alt) || isNaN(larg)) {
+                alert("Por favor, preencha todos os campos corretamente.");
+                return;
+            }
+            
+            var result = (alt * larg) / rendimento;
+            document.getElementById("tint").value = result.toFixed(2);
+        }
+
+        document.getElementById("result").addEventListener("click", calculartinta);
+    </script>
+
+</body>
+</html>
